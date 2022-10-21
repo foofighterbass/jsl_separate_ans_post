@@ -1,0 +1,46 @@
+---
+#liferay
+liferay_url: "https://deac-fra.dl.sourceforge.net/project/lportal/Liferay%20Portal/7.3.5%20GA6/liferay-ce-portal-tomcat-7.3.5-ga6-20200930172312275.tar.gz"
+
+liferay_gdrive_id: 1wSwTb3vM-XY7PntxUCHXR_OkTVU-bOcs
+
+liferay_dest: "home/gladiator/liferay"
+liferay_version: "7.4.3.46"
+
+liferay_archive_name: "liferay-ce-portal-tomcat-7.4.3.46-ga46-20221012072050357.tar.gz"
+liferay_folder_name: "liferay-ce-portal-7.4.3.46-ga46"
+liferay_tomcat_version: "tomcat-9.0.65"
+
+liferay_home: "{{ liferay_dest }}"   
+
+liferay_service_name: "tomcat-liferay"
+liferay_service_description: "Start/Stop Tomcat and Liferay server"
+
+#liferay config
+liferay_user: "liferay"
+liferay_group: "liferay"
+liferay_final_state: "stopped"
+liferay_service_enabled: true
+
+liferay_document_library_root: "~/liferay/data/document_library"
+liferay_database: "liferaydb"
+admin_email: "admin"
+admin_password: "admin"
+admin_email_name: "Liferay Administrator"
+cluster_enabled: "false"
+security_mode: "ip"
+company_id: "20099"
+domains_allowed:
+  - "*.local"
+  - "localhost"
+ips_allowed:
+  - "127.0.0.1"
+  - "SERVER_IP"
+
+#postgres
+postgres_database: liferay_db
+db_user: liferay_admin
+db_password: qwe123
+
+default_postgres_user: postgres
+default_postgres_password: qazwsxedc

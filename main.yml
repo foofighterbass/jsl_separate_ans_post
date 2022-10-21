@@ -1,0 +1,10 @@
+---
+- hosts: postgres
+  roles:
+    - role: postgres
+      when: install_the is defined and install_the == "postgres" or install_the == "all"
+
+- hosts: liferay
+  roles:
+    - role: liferay
+      when: install_the is defined and install_the == "liferay" or install_the == "all"

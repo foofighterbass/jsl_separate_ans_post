@@ -1,0 +1,16 @@
+jdbc.default.driverClassName=org.postgresql.Driver
+jdbc.default.password={{ db_password }}
+jdbc.default.url=jdbc:postgresql://localhost:5432/{{ postgres_database }}
+jdbc.default.username={{ db_user }}
+
+default.admin.password={{ admin_password }}
+default.admin.screen.name={{ liferay_user }}
+default.admin.email.address.prefix={{ admin_email }}
+default.admin.first.name={{ liferay_user }}
+
+admin.email.from.address={{ admin_email }}@liferay.com
+company.default.locale=en_US
+company.default.time.zone=UTC
+company.default.web.id=liferay.com
+liferay.home={{ liferay_dest }}
+setup.wizard.enabled=false

@@ -1,0 +1,52 @@
+---
+- name: "Passing Variables On The Command Line"
+  debug:
+    msg: "{{ liferay_user }}"
+
+- name: "Installing java"
+  apt:
+    name: 
+      - default-jre
+    update-cache: yes
+    cache_valid_time: 86400
+  become: true
+
+- name: "Creating directory for liferay"
+  file:
+    path: /{{ liferay_dest }}
+    state: directory
+
+- name: "Gdown install"
+  ansible.builtin.pip:
+    name: gdown
+
+- name: "Download liferay"
+  shell: gdown {{ liferay_gdrive_id }}
+  args:
+    chdir: /{{ liferay_dest }}
+
+#- name: "Download liferay"
+#  ansible.builtin.get_url:
+#    url: https://deac-fra.dl.sourceforge.net/project/lportal/Liferay%20Portal/7.3.5%20GA6/liferay-ce-portal-tomcat-7.3.5-ga6-20200930172312275.tar.gz
+#    dest: /{{ liferay_dest }}
+
+#- name: "Copying liferay to remote host"
+#  copy: 
+#    src: files/{{ liferay_archive_name }}
+#    dest: /{{ liferay_dest }}
+
+- name: "Unzipping arhive"
+  unarchive:
+    src: /{{ liferay_dest }}/{{ liferay_archive_name }}
+    dest: /{{ liferay_dest }}
+    extra_opts: [--strip-components=1]
+    remote_src: yes
+
+- name: "Copying psql properties to remote host"
+  template:
+    src: portal-ext.properties.j2
+    dest: /{{ liferay_home }}/portal-ext.properties
+
+#- name: "Starting liferay"
+#  shell: /{{ liferay_dest }}/{{ liferay_tomcat_version }}/bin/startup.sh
+#  become: true

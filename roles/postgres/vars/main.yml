@@ -1,0 +1,7 @@
+#postgres
+postgres_database: liferay_db
+db_user: liferay_admin
+db_password: qwe123
+
+default_postgres_user: postgres
+default_postgres_password: qazwsxedc
